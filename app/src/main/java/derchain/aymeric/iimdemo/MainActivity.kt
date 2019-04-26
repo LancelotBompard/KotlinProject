@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity(){
 
 
 
-
         val retrofit = Retrofit.Builder()
             .baseUrl("https://jsonplaceholder.typicode.com")
             .addConverterFactory(GsonConverterFactory.create())

@@ -4,10 +4,12 @@ import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import derchain.aymeric.iimdemo.model.Post
+import derchain.aymeric.iimdemo.model.User
 
 class PostActivity : AppCompatActivity() {
 
     lateinit var post : Post
+    lateinit var user : User
 
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -16,18 +18,37 @@ class PostActivity : AppCompatActivity() {
                 val args = Bundle()
                 args.putString("text", post.body)
                 textFragment.arguments = args
+
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.fragment_layout, textFragment)
                     .commit()
             }
+
             R.id.navigation_comments -> {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_layout, CommentsFragment())
-                    .commit()
+//                val commentsFragment = CommentsFragment()
+//                val args = Bundle()
+//                args.putString("text", post.body)
+//                commentsFragment.arguments = args
+
+//                supportFragmentManager.beginTransaction()
+//                    .replace(R.id.fragment_layout, commentsFragment)
+//                    .commit()
             }
+
+
+//            holder.itemView.cellTitle.text = post.title
+//            holder.itemView.cellUser.text =  users.first{it.id == post.userId} .name
+
+
             R.id.navigation_author -> {
+
+                val authorFragment = AuthorFragment()
+                val args = Bundle()
+                args.putString("name", user.name)
+                authorFragment.arguments = args
+
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_layout, AuthorFragment())
+                    .replace(R.id.fragment_layout, authorFragment)
                     .commit()
             }
         }
@@ -50,5 +71,7 @@ class PostActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_layout, textFragment)
             .commit()
+
+        this.title = post.title
     }
 }

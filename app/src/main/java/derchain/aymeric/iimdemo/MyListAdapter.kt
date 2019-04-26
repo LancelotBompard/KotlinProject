@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.cell.view.*
 
       override fun getItemCount(): Int = posts.size
 
-      override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyListAdapter.ViewHolder {
+      override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
           val inflater = LayoutInflater.from(parent.context)
           val view = inflater.inflate(R.layout.cell, parent, false)
           return ViewHolder(view)

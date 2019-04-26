@@ -16,6 +16,6 @@ class CommentsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val text = arguments!!.getString("Comments")
-        body.text = text
+        AName.text = text
     }
 }

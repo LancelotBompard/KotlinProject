@@ -15,8 +15,8 @@ class TextFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val text = arguments!!.getString("Text")
-        body.text = text
+        val text = arguments!!.getString("text")
+        AName.text = text
     }
 
 }
