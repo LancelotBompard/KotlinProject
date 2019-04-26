@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">IIM Demo</string>
+    <string name="title_activity_post">PostActivity</string>
+    <string name="title_text">Texte</string>
+    <string name="title_comments">Commentaire</string>
+    <string name="title_author">Auteur</string>
+</resources>
