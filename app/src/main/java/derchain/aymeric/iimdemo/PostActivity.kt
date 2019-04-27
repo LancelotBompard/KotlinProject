@@ -16,7 +16,7 @@ class PostActivity : AppCompatActivity() {
             R.id.navigation_text -> {
                 val textFragment = TextFragment()
                 val args = Bundle()
-                args.putString("text", post.body)
+                args.putString("PostBody", post.body)
                 textFragment.arguments = args
 
                 supportFragmentManager.beginTransaction()
@@ -25,26 +25,36 @@ class PostActivity : AppCompatActivity() {
             }
 
             R.id.navigation_comments -> {
-//                val commentsFragment = CommentsFragment()
-//                val args = Bundle()
-//                args.putString("text", post.body)
-//                commentsFragment.arguments = args
+                val textFragment = TextFragment()
+                val args = Bundle()
+                args.putString("PostBody", post.body)
+                textFragment.arguments = args
 
-//                supportFragmentManager.beginTransaction()
-//                    .replace(R.id.fragment_layout, commentsFragment)
-//                    .commit()
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_layout, textFragment)
+                    .commit()
             }
-
-
-//            holder.itemView.cellTitle.text = post.title
-//            holder.itemView.cellUser.text =  users.first{it.id == post.userId} .name
-
 
             R.id.navigation_author -> {
 
                 val authorFragment = AuthorFragment()
                 val args = Bundle()
-                args.putString("name", user.name)
+                args.putString("AuteurName", user.name)
+                args.putString("AuteurUserName", user.username)
+                args.putString("AuteurEmail", user.email)
+                args.putString("AuteurPhone", user.phone)
+                args.putString("AuteurWebsite", user.website)
+
+                args.putString("AuteurAdrStreet", user.address.street)
+                args.putString("AuteurAdrSuite", user.address.suite)
+                args.putString("AuteurAdrCity", user.address.city)
+                args.putString("AuteurAdrZipcode", user.address.zipcode)
+                args.putString("AuteurAdrLat", user.address.geo.lat)
+                args.putString("AuteurAdrLng", user.address.geo.lng)
+
+                args.putString("AuteurCpnName", user.company.name)
+                args.putString("AuteurCpnCatchPhrase", user.company.catchPhrase)
+                args.putString("AuteurCpnBs", user.company.bs)
                 authorFragment.arguments = args
 
                 supportFragmentManager.beginTransaction()
@@ -59,6 +69,7 @@ class PostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         post = intent.getSerializableExtra("post") as Post
+        user = intent.getSerializableExtra("user") as User
 
         setContentView(R.layout.activity_post)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
@@ -66,7 +77,7 @@ class PostActivity : AppCompatActivity() {
 
         val textFragment = TextFragment()
         val args = Bundle()
-        args.putString("text", post.body)
+        args.putString("PostBody", post.body)
         textFragment.arguments = args
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_layout, textFragment)

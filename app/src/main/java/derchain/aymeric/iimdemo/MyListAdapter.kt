@@ -26,16 +26,25 @@ import kotlinx.android.synthetic.main.cell.view.*
 
       override fun onBindViewHolder(holder: ViewHolder, position: Int) {
           val post = posts[position]
+          val user = users[post.userId - 1]
+
           holder.itemView.cellTitle.text = post.title
           holder.itemView.cellUser.text =  users.first{it.id == post.userId} .name
 
+
           holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, PostActivity::class.java)
-            intent.putExtra("post", post)
+            intent.putExtra("user", post)
+            intent.putExtra("user", user)
+              println("test " + post)
+              println("test2 " + user)
+              println(intent.putExtra("post", post))
             holder.itemView.context.startActivity(intent)
           }
       }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
+
 
   }
