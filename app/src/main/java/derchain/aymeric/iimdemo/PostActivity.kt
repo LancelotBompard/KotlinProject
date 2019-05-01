@@ -3,13 +3,17 @@ package derchain.aymeric.iimdemo
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import derchain.aymeric.iimdemo.model.Post
 import derchain.aymeric.iimdemo.model.User
+import derchain.aymeric.iimdemo.model.Comment
+import kotlinx.android.synthetic.main.fragment_comments.*
 
 class PostActivity : AppCompatActivity() {
 
     lateinit var post : Post
     lateinit var user : User
+    lateinit var comment: Comment
 
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -25,13 +29,15 @@ class PostActivity : AppCompatActivity() {
             }
 
             R.id.navigation_comments -> {
-                val textFragment = TextFragment()
+                val commentsFragment = CommentsFragment()
                 val args = Bundle()
-                args.putString("PostBody", post.body)
-                textFragment.arguments = args
+                args.putString("CommentName", comment.name)
+                args.putString("CommentEmail", comment.email)
+                args.putString("CommentBody", comment.body)
+                commentsFragment.arguments = args
 
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_layout, textFragment)
+                    .replace(R.id.fragment_layout, commentsFragment)
                     .commit()
             }
 
@@ -70,6 +76,7 @@ class PostActivity : AppCompatActivity() {
 
         post = intent.getSerializableExtra("post") as Post
         user = intent.getSerializableExtra("user") as User
+        comment = intent.getSerializableExtra("comment") as Comment
 
         setContentView(R.layout.activity_post)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)

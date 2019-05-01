@@ -11,4 +11,7 @@ interface API {
     @GET("/users")
     fun getUsers(): Call<List<User>>
 
+    @GET("/comments")
+    fun getComments(): Call<List<Comment>>
+
 }

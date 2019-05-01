@@ -11,6 +11,7 @@ import retrofit2.*
 
 import derchain.aymeric.iimdemo.model.Post
 import derchain.aymeric.iimdemo.model.User
+import derchain.aymeric.iimdemo.model.Comment
 import derchain.aymeric.iimdemo.model.API
 
 class MainActivity : AppCompatActivity(){
@@ -32,25 +33,36 @@ class MainActivity : AppCompatActivity(){
 
         val api = retrofit.create<API>()
 
-        api.getPosts().enqueue(object : Callback<List<Post>> {
-            override fun onFailure(call: Call<List<Post>>, t: Throwable) {
+        api.getPosts().enqueue(object : Callback<List<Post>> { //JSon Post
+            override fun onFailure(call: Call<List<Post>>, t: Throwable) { //Post Fail
                 Log.e("DL", "Download failed! : ${t.message}")
             }
 
-            override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
+            override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) { //Post Success
                 val posts = response.body()!!
 
-                api.getUsers().enqueue(object : Callback<List<User>> {
-                    override fun onFailure(call: Call<List<User>>, t: Throwable) {
+                api.getUsers().enqueue(object : Callback<List<User>> { //JSon User
+                    override fun onFailure(call: Call<List<User>>, t: Throwable) { //User Fail
                         Log.e("DL", "Download failed! : ${t.message}")
                     }
 
-                    override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
+                    override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) { //User Success
                         val users = response.body()!!
 
-                        adapter.posts = posts
-                        adapter.users = users
-                        adapter.notifyDataSetChanged()
+                        api.getComments().enqueue(object : Callback<List<Comment>> { //JSon Comment
+                            override fun onFailure(call: Call<List<Comment>>, t: Throwable) { //Comment Fail
+                                Log.e("DL", "Download failed! : ${t.message}")
+                            }
+
+                            override fun onResponse(call: Call<List<Comment>>, response: Response<List<Comment>>) {//Comment Success
+                                val comments = response.body()!!
+
+                                adapter.posts = posts
+                                adapter.users = users
+                                adapter.comments = comments
+                                adapter.notifyDataSetChanged()
+                            }
+                        })
                     }
                 })
             }
