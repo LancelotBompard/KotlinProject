@@ -42,7 +42,6 @@ class PostActivity : AppCompatActivity() {
             }
 
             R.id.navigation_author -> {
-
                 val authorFragment = AuthorFragment()
                 val args = Bundle()
                 args.putString("AuteurName", user.name)
