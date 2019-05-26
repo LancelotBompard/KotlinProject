@@ -1,4 +1,4 @@
-package derchain.aymeric.iimdemo
+package bompard.lancelot.iimdemo
 
 import android.os.Bundle
 import android.util.Log
@@ -9,10 +9,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.*
 
-import derchain.aymeric.iimdemo.model.Post
-import derchain.aymeric.iimdemo.model.User
-import derchain.aymeric.iimdemo.model.Comment
-import derchain.aymeric.iimdemo.model.API
+import bompard.lancelot.iimdemo.model.Post
+import bompard.lancelot.iimdemo.model.User
+import bompard.lancelot.iimdemo.model.Comment
+import bompard.lancelot.iimdemo.model.API
 
 class MainActivity : AppCompatActivity(){
 

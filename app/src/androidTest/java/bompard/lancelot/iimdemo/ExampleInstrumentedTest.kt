@@ -1,4 +1,4 @@
-package derchain.aymeric.iimdemo
+package bompard.lancelot.iimdemo
 
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4

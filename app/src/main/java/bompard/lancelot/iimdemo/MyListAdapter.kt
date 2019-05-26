@@ -1,13 +1,13 @@
-package derchain.aymeric.iimdemo
+package bompard.lancelot.iimdemo
 
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import derchain.aymeric.iimdemo.model.Post
-import derchain.aymeric.iimdemo.model.User
-import derchain.aymeric.iimdemo.model.Comment
+import bompard.lancelot.iimdemo.model.Post
+import bompard.lancelot.iimdemo.model.User
+import bompard.lancelot.iimdemo.model.Comment
 import kotlinx.android.synthetic.main.cell.view.*
 
 

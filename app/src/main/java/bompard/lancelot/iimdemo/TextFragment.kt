@@ -1,4 +1,4 @@
-package derchain.aymeric.iimdemo
+package bompard.lancelot.iimdemo
 
 import android.os.Bundle
 import android.view.LayoutInflater

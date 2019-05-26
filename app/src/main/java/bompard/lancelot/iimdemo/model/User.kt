@@ -1,4 +1,4 @@
-package derchain.aymeric.iimdemo.model
+package bompard.lancelot.iimdemo.model
 
 import java.io.Serializable
 

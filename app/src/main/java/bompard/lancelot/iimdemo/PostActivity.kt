@@ -1,13 +1,11 @@
-package derchain.aymeric.iimdemo
+package bompard.lancelot.iimdemo
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import derchain.aymeric.iimdemo.model.Post
-import derchain.aymeric.iimdemo.model.User
-import derchain.aymeric.iimdemo.model.Comment
-import kotlinx.android.synthetic.main.fragment_comments.*
+import bompard.lancelot.iimdemo.model.Post
+import bompard.lancelot.iimdemo.model.User
+import bompard.lancelot.iimdemo.model.Comment
 
 class PostActivity : AppCompatActivity() {
 
